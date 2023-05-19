@@ -1,118 +1,120 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Header from "@/components/Header";
+import MobileHeader from "@/components/MobileHeader";
+import Hero from "@/components/Hero";
+import PostCard from "@/components/PostCard";
+import RecomendedGroups from "@/components/RecomendedGroups";
+import SignUp from "@/components/SignUp";
 
-const inter = Inter({ subsets: ['latin'] })
+
+import { FaCaretDown } from "react-icons/fa";
+import { MdGroupAdd, MdOutlineLocationOn, MdOutlineExitToApp } from "react-icons/md";
+import { HiPencil } from "react-icons/hi";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import {RxCross2} from 'react-icons/rx';
+
+import { useState } from "react";
+
+
 
 export default function Home() {
+
+  const [toggleJoin, setToggleJoin] = useState(true);
+  const [signup, setSignUp] = useState(false);
+  const [location, setLocation]=useState(false);
+ 
+
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <Header />
+      <MobileHeader />
+      <Hero />
+
+
+
+
+{/* all posts for mobile menu ends here */}
+
+<div className='sticky top-[72px] bg-[white] z-40'> 
+<div className="hidden  max-w-[1300px] mx-auto px-[25px] border-b text-grey  lg:pt-8  mb-6 lg:flex justify-between pb-2  ">
+
+
+
+{/* all posts navmenu bar starts here */}
+<ul className="flex gap-7">
+  <li className='font-medium hover:font-bold hover:underline cursor-pointer'>{`All Posts(32)`}</li>
+  <li className='font-medium hover:font-bold hover:underline cursor-pointer'>Article</li>
+  <li className='font-medium hover:font-bold hover:underline cursor-pointer'>Event</li>
+  <li className='font-medium hover:font-bold hover:underline cursor-pointer'>Education</li>
+  <li className='font-medium hover:font-bold hover:underline cursor-pointer'>Job</li>
+</ul>
+{/* all posts navmenu bar ends here */}
+
+{/* write a post and join button starts here */}
+<div className="flex items-center gap-4">
+  <button className="flex items-center gap-3 bg-[#EDEEF0] px-4 py-2 rounded hover:bg-[grey] duration-100">
+    <span>Write a post</span> <FaCaretDown />
+  </button>
+
+  
+  <div onClick={()=>{ setToggleJoin(!toggleJoin)}}> {toggleJoin? <button className="text-[white] bg-[#2F6CE5] flex items-center gap-2 px-4 py-2 rounded hover:bg-[blue] duration-100" onClick={()=>setSignUp(true)}>
+    <MdGroupAdd className="text-[24px]" /> <span>Join Group</span>
+  </button>:<button onClick={()=>alert('Make sure that you want to live')} className="text-[#6A6A6B] ] flex items-center gap-2 px-4 py-[6px] rounded border-[3px] duration-100" >
+    <MdOutlineExitToApp className="text-[24px]" /> <span >Leave Group</span>
+  </button>} </div>
+  
+
+</div>
+
+{/* write a post and join button ends here */}
+</div>
+</div>
+
+
+
+
+      {/* all categoy posts starts here */}
+      <div className="max-w-[1300px] mx-auto">
+
+        {/* all posts for mobile menu starts here */}
+   <div className="flex justify-between px-4 mt-5 lg:hidden"> 
+   
+   <span className="text-[19px] font-[700]">{`Posts(368)`}</span>
+
+  <div className="text-[18px] text-[#212529]  font-[500] bg-[#F1F3F5] px-3 py-2 rounded"> <span>Filter:</span> <select name="" className="w-[100px] bg-[#F1F3F5]">
+    <option value="all" className="w-[120px]">All</option>
+    <option value="article">Article</option>
+    <option value="event">Event</option>
+    <option value="education">Education</option>
+    <option value="jobs">Jobs</option>
+    </select></div>
+   </div>
+{/* all posts for mobile menu ends here */}
+    
+        <div className=" mt-4 flex justify-between gap-4">
+          {/* left column starts here */}
+          <div className="max-w-[100%] lg:max-w-[60%]">
+            <PostCard />
+            <PostCard />
+          </div>
+          {/* left column ends here */}
+
+          {/* right columns starts here */}
+          <div className=" hidden   w-[40%] lg:flex flex-col gap-10 mt-10 bg-[white] z-30 ">
+           <div className='ml-auto w-[70%] border-b flex items-center pb-2 gap-2 sticky top-[200px] bg-[white] z-40'> <MdOutlineLocationOn className='text-[25px]'/> <span><input type='text' id='location' placeholder={location? `Enter Your Location`: `Noida, India`} className='outline-none'/></span> <label for='location' className='ml-auto cursor-pointer' onClick={()=>setLocation(!location)}>{location? <RxCross2/>:<HiPencil className=' text-[25px]' />}</label></div>
+           <div className='ml-auto w-[70%]  flex items-start pb-2 gap-2 sticky top-[250px] bg-[white] z-40'><AiOutlineExclamationCircle className='text-[30px]'/>  <span className='relative top-1'>Your location will help us serve better and extend a personalised experience.</span>
+          </div>
+          
+          {toggleJoin? '':<RecomendedGroups  />}
+          
+            </div>
+          {/* right columns ends here */}
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      {signup && <SignUp setSignUp={setSignUp}/>}
+      {/* all categoy posts ends here */}
+      {/* {toogleSignIn?<SignIn setToogleSignIn={setToogleSignIn} setSignUp={setSignUp} setToggleAuth={setToggleAuth} toggleAuth={toggleAuth}/> : ''}   */}
+    </div>
+  );
 }
