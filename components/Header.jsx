@@ -8,7 +8,7 @@ import { FaCaretDown } from "react-icons/fa";
 import SignUp from "./SignUp";
 
 
-const Header = () => {
+const Header = ({toggleJoin}) => {
   const [signup, setSignUp] = useState(false);
  
 
@@ -42,7 +42,7 @@ const Header = () => {
       {/* Search_bar ends here */}
 
       {/* create account or SignUp&LogIn starts here */}
-      <div className="flex gap-1  bg-white">
+      <div>{toggleJoin? <div className="flex gap-1  bg-white">
         <p>Create account.</p>
         <div className="flex items-center gap-1 cursor-pointer hover:text-[blue]">
           <span
@@ -52,9 +52,23 @@ const Header = () => {
           <FaCaretDown />
         </div>
         {signup && <SignUp setSignUp={setSignUp}/>}
+        </div>: <div className="flex gap-2  bg-white">
+        <Image src='/sridhar.png' width='40' height='40' alt='img'/>
+        <div className="flex items-center gap-1 cursor-pointer hover:text-[blue]">
+          <span
+            className="text-[18px] "
+            onClick={() => {callAfunc()}}
+          >Sidharth Goyal</span>
+          <FaCaretDown  className='ml-1'/>
+        </div>
+        {/* {signup && <SignUp setSignUp={setSignUp}/>} */}
+        </div>}</div>
 
-        
-      </div>
+      
+
+
+
+      
       {/* create account or SignUp&LogIn ends here */}
     </header>
   );

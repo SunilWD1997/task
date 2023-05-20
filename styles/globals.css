@@ -11,3 +11,37 @@
 *{
   font-family: 'IBM Plex Sans', sans-serif;
 }
+
+.meetup{
+  color: #E56135;
+  border: 2px solid #A9AEB8;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+  margin: 0 25px;
+  padding: 5px 0;
+  font-size: 15px;
+  cursor: pointer;
+}
+.meetup:hover{
+background-color: #e0e0e0;
+transition: all 0.7;
+}
+
+.jobs{
+  color: #02B875;
+  border: 2px solid #A9AEB8;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+  margin: 0 25px;
+  padding: 5px 0;
+  font-size: 15px;
+  cursor: pointer;
+
+}
+
+.jobs:hover{
+  background-color: #e0e0e0;
+  transition: all 0.7;
+  }

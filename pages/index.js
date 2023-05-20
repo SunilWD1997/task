@@ -5,6 +5,8 @@ import PostCard from "@/components/PostCard";
 import RecomendedGroups from "@/components/RecomendedGroups";
 import SignUp from "@/components/SignUp";
 
+import { postData } from "@/components/PostData";
+
 
 import { FaCaretDown } from "react-icons/fa";
 import { MdGroupAdd, MdOutlineLocationOn, MdOutlineExitToApp } from "react-icons/md";
@@ -21,12 +23,14 @@ export default function Home() {
   const [toggleJoin, setToggleJoin] = useState(true);
   const [signup, setSignUp] = useState(false);
   const [location, setLocation]=useState(false);
+
+
  
 
 
   return (
     <div>
-      <Header />
+      <Header toggleJoin={toggleJoin} setToggleJoin={setToggleJoin}/>
       <MobileHeader />
       <Hero />
 
@@ -35,7 +39,7 @@ export default function Home() {
 
 {/* all posts for mobile menu ends here */}
 
-<div className='sticky top-[72px] bg-[white] z-40'> 
+<div className='sticky top-[72px] bg-[white] z-30'> 
 <div className="hidden  max-w-[1300px] mx-auto px-[25px] border-b text-grey  lg:pt-8  mb-6 lg:flex justify-between pb-2  ">
 
 
@@ -59,7 +63,7 @@ export default function Home() {
   
   <div onClick={()=>{ setToggleJoin(!toggleJoin)}}> {toggleJoin? <button className="text-[white] bg-[#2F6CE5] flex items-center gap-2 px-4 py-2 rounded hover:bg-[blue] duration-100" onClick={()=>setSignUp(true)}>
     <MdGroupAdd className="text-[24px]" /> <span>Join Group</span>
-  </button>:<button onClick={()=>alert('Make sure that you want to live')} className="text-[#6A6A6B] ] flex items-center gap-2 px-4 py-[6px] rounded border-[3px] duration-100" >
+  </button>:<button onClick={()=>alert('Make sure that you want to leave')} className="text-[#6A6A6B] ] flex items-center gap-2 px-4 py-[6px] rounded border-[3px] duration-100" >
     <MdOutlineExitToApp className="text-[24px]" /> <span >Leave Group</span>
   </button>} </div>
   
@@ -94,15 +98,19 @@ export default function Home() {
         <div className=" mt-4 flex justify-between gap-4">
           {/* left column starts here */}
           <div className="max-w-[100%] lg:max-w-[60%]">
-            <PostCard />
-            <PostCard />
+
+            {postData?.map((posts)=> {
+              return <PostCard key={posts.id} posts={posts}/>
+              })}
+           
+           
           </div>
           {/* left column ends here */}
 
           {/* right columns starts here */}
-          <div className=" hidden   w-[40%] lg:flex flex-col gap-10 mt-10 bg-[white] z-30 ">
-           <div className='ml-auto w-[70%] border-b flex items-center pb-2 gap-2 sticky top-[200px] bg-[white] z-40'> <MdOutlineLocationOn className='text-[25px]'/> <span><input type='text' id='location' placeholder={location? `Enter Your Location`: `Noida, India`} className='outline-none'/></span> <label for='location' className='ml-auto cursor-pointer' onClick={()=>setLocation(!location)}>{location? <RxCross2/>:<HiPencil className=' text-[25px]' />}</label></div>
-           <div className='ml-auto w-[70%]  flex items-start pb-2 gap-2 sticky top-[250px] bg-[white] z-40'><AiOutlineExclamationCircle className='text-[30px]'/>  <span className='relative top-1'>Your location will help us serve better and extend a personalised experience.</span>
+          <div className=" hidden   w-[40%] lg:flex flex-col gap-10 mt-10 bg-[white] ">
+           <div className='ml-auto w-[70%] border-b flex items-center pb-2 gap-2 sticky top-[200px] bg-[white] '> <MdOutlineLocationOn className='text-[25px]'/> <span><input type='text' id='location' placeholder={location? `Enter Your Location`: `Noida, India`} className='outline-none'/></span> <label for='location' className='ml-auto cursor-pointer' onClick={()=>setLocation(!location)}>{location? <RxCross2/>:<HiPencil className=' text-[25px]' />}</label></div>
+           <div className='ml-auto w-[70%]  flex items-start pb-2 gap-2 sticky top-[250px] bg-[white] '><AiOutlineExclamationCircle className='text-[30px]'/>  <span className='relative top-1'>Your location will help us serve better and extend a personalised experience.</span>
           </div>
           
           {toggleJoin? '':<RecomendedGroups  />}
