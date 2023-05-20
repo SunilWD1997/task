@@ -63,7 +63,7 @@ const PostCard = ({posts}) => {
 
 {/* posts date and address starts here */}
 
-{posts?.postTimeLine && <div className="flex items-center px-[24px] md:px-[25px] gap-[30px] font-[300] md:font-[600]"><div className="flex items-center gap-2"><span className="text-[16px] md:text-[20px]"> <Image src={posts?.postTimeLine?.logo1} width='20' height='20' alt='img'/> </span> <span>{posts?.postTimeLine?.desc1}</span></div> <div className="flex items-center gap-1"><span><Image src={posts?.postTimeLine?.logo2} width='15' height='20' alt='img'/></span>  <span className="text-[20px]">{posts?.postTimeLine?.desc2}</span></div>  </div>}
+{posts?.postTimeLine && <div className="flex items-center px-[24px] md:px-[25px] gap-[30px] font-[300] md:font-[600]"><div className="flex items-center gap-2"><span className="text-[16px] md:text-[20px]"> <Image src={posts?.postTimeLine?.logo1} width='20' height='20' alt='img'/> </span> <span>{posts?.postTimeLine?.desc1.substring(0,19)}</span></div> <div className="flex items-center gap-1"><span><Image src={posts?.postTimeLine?.logo2} width='15' height='20' alt='img'/></span>  <span className="text-[20px]">{posts?.postTimeLine?.desc2}</span></div>  </div>}
 {/* posts date and address ends here */}
 
 
