@@ -32,7 +32,7 @@ const PostCard = ({posts}) => {
 
       {/* Post title starts here */}
       <div className="text-[black] flex justify-between px-[25px]">
-        <h3 className="w-[70%] text-[22px] font-[600px]">
+        <h3 className="w-[80%] text-[18px] md:text-[22px] font-[600px]">
           {posts?.postHeading}
         </h3>
 
@@ -56,14 +56,14 @@ const PostCard = ({posts}) => {
       {/* Post title ends here */}
 
       {/* post short description starts  */}
-      <p className="text-[19px] text-[#5C5C5C] px-[25px]">
+      <p className=" text-[14px] md:text-[19px] text-[#5C5C5C] px-[25px]">
         {posts?.para}
       </p>
       {/* post short description ends  */}
 
 {/* posts date and address starts here */}
 
-{posts?.postTimeLine && <div className="flex items-center px-[25px] gap-[50px] font-[600]"><div className="flex items-center gap-2"><span className="text-[20px]"> <Image src={posts?.postTimeLine?.logo1} width='20' height='20' alt='img'/> </span> <span>{posts?.postTimeLine?.desc1}</span></div> <div className="flex items-center gap-1"><span><Image src={posts?.postTimeLine?.logo2} width='15' height='20' alt='img'/></span>  <span className="text-[20px]">{posts?.postTimeLine?.desc2}</span></div>  </div>}
+{posts?.postTimeLine && <div className="flex items-center px-[20px] md:px-[25px] gap-[30px] font-[300] md:font-[600]"><div className="flex items-center gap-2"><span className="text-[16px] md:text-[20px]"> <Image src={posts?.postTimeLine?.logo1} width='20' height='20' alt='img'/> </span> <span>{posts?.postTimeLine?.desc1}</span></div> <div className="flex items-center gap-1"><span><Image src={posts?.postTimeLine?.logo2} width='15' height='20' alt='img'/></span>  <span className="text-[20px]">{posts?.postTimeLine?.desc2}</span></div>  </div>}
 {/* posts date and address ends here */}
 
 
@@ -72,7 +72,7 @@ const PostCard = ({posts}) => {
 {/* posts button Visit ends */}
 
       {/* posted of profile details starts here */}
-      <div className="flex justify-between items-center px-[25px]">
+      <div className="flex justify-between items-center px-[20] md:px-[25px]">
         <div className="flex items-center gap-2">
           <Image src={posts?.profileImg} width="50" height="50" alt="img" />
           <div>
