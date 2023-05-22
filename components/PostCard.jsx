@@ -76,8 +76,8 @@ const PostCard = ({posts}) => {
         <div className="flex items-center gap-2">
           <Image src={posts?.profileImg} width="50" height="50" alt="img" />
           <div>
-          <h4 className=" text-[20px] font-[600px]">{posts?.name}</h4>
-          <span className=" lg:hidden">{posts?.views} views</span>
+          <h4 className="text-[16px] md:text-[20px] font-[600px]">{posts?.name}</h4>
+          <span className="text-[14px] lg:hidden">{posts?.views} views</span>
           </div>
           
         </div>
