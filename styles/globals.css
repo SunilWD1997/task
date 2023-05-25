@@ -45,3 +45,29 @@ transition: all 0.7;
   background-color: #e0e0e0;
   transition: all 0.7;
   }
+
+
+
+  .scroll_bar::-webkit-scrollbar{
+    width: 5px;
+    height: 100px;
+    /* background: green; */
+    scroll-behavior: smooth;
+    
+  }
+  .scroll_bar::-webkit-scrollbar-track{
+    width: 10px;
+    height: 100px;
+    background: rgb(192, 192, 192);
+    /* display: none; */
+  }
+  .scroll_bar::-webkit-scrollbar-thumb{
+    
+    background: rgb(117, 117, 117);
+    border-radius: 10px;
+    /* display: none; */
+  }
+
+
+
+  
